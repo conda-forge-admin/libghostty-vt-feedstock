@@ -15,7 +15,6 @@ def zig_executable():
     # Also handle build environments where activation did not export ZIG.
     build_prefix = os.environ.get('BUILD_PREFIX')
     if build_prefix:
-        executable = Path(build_prefix) / 'Library/bin/x86_64-w64-mingw32-zig.exe'
-        if executable.is_file():
+        for executable in sorted((Path(build_prefix) / 'Library/bin').glob('*-w64-mingw32-zig.exe')):
             return str(executable)
     raise FileNotFoundError('Cannot find the build-platform Zig compiler; checked ZIG, CONDA_ZIG_BUILD, PATH, and BUILD_PREFIX')
