@@ -18,7 +18,8 @@ packages = src / 'vt-deps'
 platform = os.environ['target_platform']
 prefix = Path(os.environ['LIBRARY_PREFIX'] if platform.startswith('win-') else os.environ['PREFIX'])
 target = {'linux-64': 'x86_64-linux-gnu', 'linux-aarch64': 'aarch64-linux-gnu',
-          'osx-arm64': 'aarch64-macos.13.0', 'osx-64': 'x86_64-macos.13.0', 'win-64': 'x86_64-windows-msvc'}[platform]
+          'osx-arm64': 'aarch64-macos.13.0', 'osx-64': 'x86_64-macos.13.0',
+          'win-64': 'x86_64-windows-msvc', 'win-arm64': 'aarch64-windows-msvc'}[platform]
 flags = []
 if platform.startswith('linux-'):
     host = os.environ['HOST']
